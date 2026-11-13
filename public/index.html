@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in - GymDesk</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <main class="login-wrap" id="main">
+    <div class="login-box">
+      <div class="login-logo">
+        <span class="login-logo-box" aria-hidden="true">GD</span>
+        <div>
+          <h1>GymDesk</h1>
+          <p class="login-subtitle">Staff sign-in</p>
+        </div>
+      </div>
+
+      <div class="error-box" id="error-box" tabindex="-1" hidden>
+        <h2 class="error-box-title">There is a problem</h2>
+        <ul class="error-box-list" id="error-box-list"></ul>
+      </div>
+
+      <div class="status" id="page-status" role="status"></div>
+
+      <form id="signin-form" novalidate>
+        <div class="field">
+          <label class="label" for="username">Staff username</label>
+          <input type="text" id="username" name="username" autocomplete="username" aria-describedby="username-error">
+          <p class="error" id="username-error"></p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" aria-describedby="password-error">
+          <p class="error" id="password-error"></p>
+        </div>
+
+        <button class="btn btn-full" type="submit" id="signin-button">Sign in</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <p>GymDesk coursework demo. All member data is made up.</p>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/signin.js"></script>
+</body>
+</html>

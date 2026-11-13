@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add a member - GymDesk</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <p class="logo"><span class="logo-box" aria-hidden="true">GD</span> GymDesk</p>
+      <div class="user-box">
+        <span class="user-name">
+          <span id="session-name">Signed in</span>
+          <span class="user-role" id="session-role"></span>
+        </span>
+        <button class="btn btn-light" type="button" id="signout-button">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="menu" aria-label="Main">
+    <ul class="menu-list">
+      <li><a class="menu-link" href="/dashboard.html">Dashboard</a></li>
+      <li><a class="menu-link" href="/members.html">Members</a></li>
+      <li><a class="menu-link" href="/member-form.html" id="add-link" aria-current="page">Add member</a></li>
+    </ul>
+  </nav>
+
+  <main class="container" id="main">
+    <h1 id="form-heading">Add a member</h1>
+    <p class="lead">Extra questions appear only when they apply.</p>
+
+    <div class="error-box" id="error-box" tabindex="-1" hidden>
+      <h2 class="error-box-title">There is a problem</h2>
+      <ul class="error-box-list" id="error-box-list"></ul>
+    </div>
+
+    <div class="status" id="page-status" role="status" tabindex="-1"></div>
+
+    <form class="form" id="member-form" novalidate>
+      <p class="required-note">All fields are required unless they say "optional".</p>
+
+      <fieldset>
+        <legend>Personal details</legend>
+
+        <div class="field">
+          <label class="label" for="firstName">First name</label>
+          <input type="text" id="firstName" name="firstName" autocomplete="given-name" aria-describedby="firstName-error">
+          <p class="error" id="firstName-error"></p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="lastName">Last name</label>
+          <input type="text" id="lastName" name="lastName" autocomplete="family-name" aria-describedby="lastName-error">
+          <p class="error" id="lastName-error"></p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="email">Email address</label>
+          <p class="hint" id="email-hint">For example name@example.com</p>
+          <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-hint email-error">
+          <p class="error" id="email-error"></p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="phone">Phone number</label>
+          <p class="hint" id="phone-hint">For example 01012345678</p>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" aria-describedby="phone-hint phone-error">
+          <p class="error" id="phone-error"></p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="dob">Date of birth</label>
+          <p class="hint" id="dob-hint">Members must be 14 or older. Under-18s need a parent or guardian.</p>
+          <input type="date" id="dob" name="dob" autocomplete="bday" aria-describedby="dob-hint dob-error">
+          <p class="error" id="dob-error"></p>
+        </div>
+
+        <div class="extra" id="guardian-section" hidden>
+          <p class="label">Parent or guardian</p>
+          <div class="field">
+            <label class="label" for="guardianName">Parent or guardian name</label>
+            <input type="text" id="guardianName" name="guardianName" aria-describedby="guardianName-error">
+            <p class="error" id="guardianName-error"></p>
+          </div>
+          <div class="field">
+            <label class="label" for="guardianPhone">Parent or guardian phone</label>
+            <input type="tel" id="guardianPhone" name="guardianPhone" aria-describedby="guardianPhone-error">
+            <p class="error" id="guardianPhone-error"></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Membership</legend>
+
+        <fieldset class="field field-wide">
+          <legend class="label">Plan</legend>
+          <p class="hint" id="plan-hint">Monthly plans last one month. The annual plan lasts one year.</p>
+          <ul class="choices">
+            <li><label class="choice"><input type="radio" name="plan" value="standard" aria-describedby="plan-hint plan-error"> Standard monthly</label></li>
+            <li><label class="choice"><input type="radio" name="plan" value="offpeak" aria-describedby="plan-hint plan-error"> Off-peak monthly</label></li>
+            <li><label class="choice"><input type="radio" name="plan" value="student" aria-describedby="plan-hint plan-error"> Student monthly</label></li>
+            <li><label class="choice"><input type="radio" name="plan" value="annual" aria-describedby="plan-hint plan-error"> Annual</label></li>
+          </ul>
+          <p class="error" id="plan-error"></p>
+        </fieldset>
+
+        <div class="extra" id="student-section" hidden>
+          <div class="field">
+            <label class="label" for="studentId">Student ID</label>
+            <input type="text" id="studentId" name="studentId" aria-describedby="studentId-error">
+            <p class="error" id="studentId-error"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="startDate">Start date</label>
+          <input type="date" id="startDate" name="startDate" aria-describedby="startDate-error">
+          <p class="error" id="startDate-error"></p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="status">Status</label>
+          <select id="status" name="status" aria-describedby="status-error">
+            <option value="active">Active</option>
+            <option value="frozen">Frozen</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <p class="error" id="status-error"></p>
+        </div>
+
+        <div class="extra" id="freeze-section" hidden>
+          <div class="field">
+            <label class="label" for="freezeUntil">Freeze ends on</label>
+            <input type="date" id="freezeUntil" name="freezeUntil" aria-describedby="freezeUntil-error">
+            <p class="error" id="freezeUntil-error"></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Payment and health</legend>
+
+        <fieldset class="field field-wide">
+          <legend class="label">How will they pay?</legend>
+          <ul class="choices choices-row">
+            <li><label class="choice"><input type="radio" name="payment" value="card" aria-describedby="payment-error"> Card</label></li>
+            <li><label class="choice"><input type="radio" name="payment" value="cash" aria-describedby="payment-error"> Cash</label></li>
+            <li><label class="choice"><input type="radio" name="payment" value="debit" aria-describedby="payment-error"> Direct debit</label></li>
+          </ul>
+          <p class="error" id="payment-error"></p>
+        </fieldset>
+
+        <div class="extra" id="debit-section" hidden>
+          <div class="field">
+            <label class="label" for="debitDay">Collection day</label>
+            <select id="debitDay" name="debitDay" aria-describedby="debitDay-error">
+              <option value="">Choose a day</option>
+              <option value="1">1st of the month</option>
+              <option value="15">15th of the month</option>
+              <option value="28">28th of the month</option>
+            </select>
+            <p class="error" id="debitDay-error"></p>
+          </div>
+        </div>
+
+        <div class="field field-wide">
+          <label class="choice"><input type="checkbox" id="medical" name="medical"> Has a health condition or injury the trainers should know about (optional)</label>
+        </div>
+
+        <div class="extra" id="medical-section" hidden>
+          <div class="field field-wide">
+            <label class="label" for="medicalNotes">What should the trainers know?</label>
+            <textarea id="medicalNotes" name="medicalNotes" maxlength="500" aria-describedby="medicalNotes-error"></textarea>
+            <p class="error" id="medicalNotes-error"></p>
+          </div>
+        </div>
+
+        <div class="field field-wide">
+          <label class="choice"><input type="checkbox" id="declaration" name="declaration" aria-describedby="declaration-error"> The member has signed the health declaration</label>
+          <p class="error" id="declaration-error"></p>
+        </div>
+      </fieldset>
+
+      <div class="form-buttons">
+        <button class="btn" type="submit" id="save-button">Save member</button>
+        <a class="btn btn-plain" href="/members.html">Cancel</a>
+      </div>
+    </form>
+  </main>
+
+  <footer class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <p>GymDesk coursework demo. All member data is made up.</p>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/session.js"></script>
+  <script src="/js/member-form.js"></script>
+</body>
+</html>

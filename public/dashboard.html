@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - GymDesk</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <p class="logo"><span class="logo-box" aria-hidden="true">GD</span> GymDesk</p>
+      <div class="user-box">
+        <span class="user-name">
+          <span id="session-name">Signed in</span>
+          <span class="user-role" id="session-role"></span>
+        </span>
+        <button class="btn btn-light" type="button" id="signout-button">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="menu" aria-label="Main">
+    <ul class="menu-list">
+      <li><a class="menu-link" href="/dashboard.html" aria-current="page">Dashboard</a></li>
+      <li><a class="menu-link" href="/members.html">Members</a></li>
+      <li><a class="menu-link" href="/member-form.html">Add member</a></li>
+    </ul>
+  </nav>
+
+  <main class="container" id="main">
+    <h1>Dashboard</h1>
+
+    <div class="status" id="page-status" role="status"></div>
+
+    <section class="block" aria-labelledby="figures-heading">
+      <h2 id="figures-heading">Memberships</h2>
+      <ul class="stats">
+        <li class="stat">
+          <span class="stat-label">Total members</span>
+          <span class="stat-number" id="stat-total">-</span>
+        </li>
+        <li class="stat stat-green">
+          <span class="stat-label">Active</span>
+          <span class="stat-number" id="stat-active">-</span>
+        </li>
+        <li class="stat stat-amber">
+          <span class="stat-label">Frozen</span>
+          <span class="stat-number" id="stat-frozen">-</span>
+        </li>
+        <li class="stat stat-red">
+          <span class="stat-label">Cancelled</span>
+          <span class="stat-number" id="stat-cancelled">-</span>
+        </li>
+        <li class="stat stat-red">
+          <span class="stat-label">Expired</span>
+          <span class="stat-number" id="stat-expired">-</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="tasks-heading">
+      <h2 id="tasks-heading">Common tasks</h2>
+      <ul class="shortcuts">
+        <li>
+          <a class="shortcut" href="/member-form.html">
+            <span class="shortcut-title">Add a new member</span>
+            <span class="shortcut-note">Register a membership and set up payment.</span>
+          </a>
+        </li>
+        <li>
+          <a class="shortcut" href="/members.html">
+            <span class="shortcut-title">Find a member</span>
+            <span class="shortcut-note">Search, filter and sort the members list.</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <p>GymDesk coursework demo. All member data is made up.</p>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/session.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

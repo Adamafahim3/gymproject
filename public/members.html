@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Members - GymDesk</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <p class="logo"><span class="logo-box" aria-hidden="true">GD</span> GymDesk</p>
+      <div class="user-box">
+        <span class="user-name">
+          <span id="session-name">Signed in</span>
+          <span class="user-role" id="session-role"></span>
+        </span>
+        <button class="btn btn-light" type="button" id="signout-button">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="menu" aria-label="Main">
+    <ul class="menu-list">
+      <li><a class="menu-link" href="/dashboard.html">Dashboard</a></li>
+      <li><a class="menu-link" href="/members.html" aria-current="page">Members</a></li>
+      <li><a class="menu-link" href="/member-form.html">Add member</a></li>
+    </ul>
+  </nav>
+
+  <main class="container" id="main">
+    <h1>Members</h1>
+    <p class="lead">Search by name, email, phone or member reference.</p>
+
+    <div class="status" id="page-status" role="status" tabindex="-1"></div>
+
+    <form class="filters" id="filter-form" role="search" aria-label="Search members">
+      <div class="field">
+        <label class="label" for="search">Search</label>
+        <input type="search" id="search" name="search" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label class="label" for="status-filter">Status</label>
+        <select id="status-filter">
+          <option value="all">All statuses</option>
+          <option value="active">Active</option>
+          <option value="frozen">Frozen</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="label" for="plan-filter">Plan</label>
+        <select id="plan-filter">
+          <option value="all">All plans</option>
+          <option value="standard">Standard monthly</option>
+          <option value="offpeak">Off-peak monthly</option>
+          <option value="student">Student monthly</option>
+          <option value="annual">Annual</option>
+        </select>
+      </div>
+
+      <div class="filter-buttons">
+        <button class="btn" type="submit">Search</button>
+        <button class="btn btn-plain" type="button" id="clear-button">Clear</button>
+      </div>
+    </form>
+
+    <p class="count" id="count" role="status">Loading members&hellip;</p>
+
+    <div class="empty" id="empty" hidden>
+      <h2>No members found</h2>
+      <p>Try a shorter search, or clear the filters to see everyone.</p>
+      <button class="btn btn-light" type="button" id="empty-clear">Clear filters</button>
+    </div>
+
+    <div class="table-box" id="table-box">
+      <table class="table" id="members-table">
+        <caption>Gym members. Use the column headings to sort.</caption>
+        <thead>
+          <tr>
+            <th scope="col"><button class="sort-btn" type="button" data-sort="id">Reference <span class="arrow" aria-hidden="true"></span></button></th>
+            <th scope="col"><button class="sort-btn" type="button" data-sort="name">Name <span class="arrow" aria-hidden="true"></span></button></th>
+            <th scope="col"><button class="sort-btn" type="button" data-sort="plan">Plan <span class="arrow" aria-hidden="true"></span></button></th>
+            <th scope="col"><button class="sort-btn" type="button" data-sort="status">Status <span class="arrow" aria-hidden="true"></span></button></th>
+            <th scope="col"><button class="sort-btn" type="button" data-sort="startDate">Started <span class="arrow" aria-hidden="true"></span></button></th>
+            <th scope="col"><button class="sort-btn" type="button" data-sort="expiryDate">Expires <span class="arrow" aria-hidden="true"></span></button></th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="members-body"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <p>GymDesk coursework demo. All member data is made up.</p>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/session.js"></script>
+  <script src="/js/members.js"></script>
+</body>
+</html>
